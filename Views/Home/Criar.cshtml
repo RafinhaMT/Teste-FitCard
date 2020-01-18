@@ -1,0 +1,121 @@
+﻿@model Teste_FitCard.Models.Estabelecimento
+
+@{
+    ViewData["Title"] = "Criar";
+}
+
+<h1>Criar</h1>
+
+<form asp-action="Criar">
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <span class="text-danger">@ViewData.ModelState["erro"].Errors[0].ErrorMessage</span>
+    }
+    <div class="row">
+        <div class="col-md-6">
+            <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" id="checkboxStatus" asp-for="status" />
+                <label class="custom-control-label" for="checkboxStatus">@Html.DisplayNameFor(model => model.status)</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="cnpj" class="control-label"></label>
+                <input asp-for="cnpj" class="form-control cnpj" />
+                <span asp-validation-for="cnpj" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="razaoSocial" class="control-label"></label>
+                <input asp-for="razaoSocial" class="form-control razaoSocial" />
+                <span asp-validation-for="razaoSocial" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="nomeFantasia" class="control-label"></label>
+                <input asp-for="nomeFantasia" class="form-control nomeFantasia" />
+                <span asp-validation-for="nomeFantasia" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control email" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="estado" class="control-label"></label>
+                <input asp-for="estado" class="form-control estado" />
+                <span asp-validation-for="estado" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="cidade" class="control-label"></label>
+                <input asp-for="cidade" class="form-control cidade" />
+                <span asp-validation-for="cidade" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="endereco" class="control-label"></label>
+                <input asp-for="endereco" class="form-control endereco" />
+                <span asp-validation-for="endereco" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="telefone" class="control-label"></label>
+                <input asp-for="telefone" class="form-control telefone" />
+                <span asp-validation-for="telefone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="dataDeCadastro" class="control-label"></label>
+                <input asp-for="dataDeCadastro" class="form-control" />
+                <span asp-validation-for="dataDeCadastro" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="idCategoria" class="control-label"></label>
+                @Html.DropDownListFor(Model => Model.idCategoria, new SelectList(ViewBag.Categorias, "id", "nome"), new { @class = "custom-select" })
+                <span asp-validation-for="idCategoria" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="agencia" class="control-label"></label>
+                <input asp-for="agencia" class="form-control agencia" />
+                <span asp-validation-for="agencia" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="conta" class="control-label"></label>
+                <input asp-for="conta" class="form-control conta" />
+                <span asp-validation-for="conta" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Criar" class="btn btn-success btn-lg float-right" />
+        <a asp-action="Index" class="btn btn-secondary btn-lg ">Voltar</a>
+    </div>
+
+</form>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

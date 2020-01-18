@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Teste_FitCard.Models.Estabelecimento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<p>
+    <a asp-action="Criar" class="btn btn-success btn-lg">Criar</a>
+</p>
+@if (Model.Count() > 0)
+{
+
+
+<table class="table">
+    <thead>
+        <tr>                                
+            <th>
+                @Html.DisplayNameFor(model => model.razaoSocial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cnpj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>         
+            <td>
+                @Html.DisplayFor(modelItem => item.razaoSocial)
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.cnpj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>           
+            <td>
+                <a asp-action="Editar" asp-route-id="@item.id" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                <a asp-action="Detalhes" asp-route-id="@item.id" class="btn btn-sm btn-info"><i class="fa fa-info-circle"></i></a>
+                <a asp-action="Deletar" asp-route-id="@item.id" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+} else
+{
+    <p>Nenhum estabelecimento cadastrado</p>
+}
